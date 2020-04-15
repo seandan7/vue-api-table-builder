@@ -80,10 +80,10 @@ export default {
     log(message) {
       console.log(message);
     },
-    remove: function(index) {
+    remove(index) {
       this.elements.splice(index, 1);
     },
-    isOdd: function(idx) {
+    isOdd(idx) {
       return idx % 2 === 0;
     },
   },
