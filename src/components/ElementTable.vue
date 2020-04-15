@@ -16,41 +16,19 @@
       <thead>
         <th
           :key="index"
-          v-for="(element, index) in tableHeadings"
+          v-for="(element, index) in dataToShow.tableHeadings"
           class="thead-dark"
         >
           {{ element }}
         </th>
       </thead>
-      <tbody is="transition-group" name="neo-list" tag="tbody" v-cloak>
-        <tr
-          v-for="(element, index) in elements"
-          :key="element.id"
-          class="overflow-hidden"
-          :class="{
-            highlight: isOdd(index),
-            'font-weight-bold': !isOdd(index),
-          }"
-        >
-          <td v-for="(dataPoint, index) in dataToShow" :key="index">
-            {{ element + "." + dataPoint }}
+      <tbody :key="index" v-for="(element, index) in elements">
+        <tr>
+          <td>{{ index + 1 }}</td>
+          <td v-for="(dataPoint, index) in dataToShow.dataPoints" :key="index">
+            {{ element[dataPoint] }}
           </td>
-          <td>{{ element.name }}</td>
-          <td>{{ element.absolute_magnitude_h }}</td>
-          <td>
-            <ul
-              v-if="element.close_approach_data.length > 0"
-              class="list-unstyled text-left border-left pl-2 "
-            >
-              <li
-                v-for="(value, key) in element.close_approach_data[0]
-                  .miss_distance"
-                :key="key"
-              >
-                <b>{{ key }}:</b> {{ value }}
-              </li>
-            </ul>
-          </td>
+
           <td>
             <button @click.stop="remove(index)" class="btn btn-warning">
               remove
@@ -108,15 +86,11 @@ export default {
   props: {
     url: String,
     heading: String,
-    tableHeadings: Array,
-    dataToShow: Array,
+    dataToShow: Object,
   },
 };
 </script>
 <style scoped>
-.highlight {
-  color: lightblue;
-}
 .height-shrink-leave-to,
 .height-shrink-enter {
   max-height: 0px !important;
@@ -125,30 +99,5 @@ export default {
 .height-shrink-leave-active {
   max-height: 500px;
   transition: all 0.2s;
-}
-
-.neo-list-leave-to,
-.neo-list-enter {
-  opacity: 0;
-  transform: translateY(30px);
-}
-.neo-list-enter-active,
-.neo-list-leave-active {
-  transition: all 0.2s linear;
-}
-
-.spin-enter-active {
-  animation: spin-steps 2s;
-}
-@keyframes spin-steps {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(2);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 </style>

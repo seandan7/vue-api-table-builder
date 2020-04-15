@@ -2,12 +2,14 @@
   <div id="app" class="container text-center mt-5">
     <Form></Form>
     <ElementTable
-      :tableHeadings="['Id', 'Name', 'Magnitude', 'Miss Distance', 'Remove']"
-      :dataToShow="[
-        'name',
-        'magnitude',
-        'close_approach_data[0].miss_distance',
-      ]"
+      :dataToShow="{
+        tableHeadings: ['Id', 'Name', 'Magnitude', 'Miss Distance', 'Remove'],
+        dataPoints: [
+          'name',
+          'magnitude',
+          'close_approach_data[0].miss_distance',
+        ],
+      }"
       heading="Near Earth Objects"
       url="https://api.nasa.gov/neo/rest/v1/feed?start_date=2019-09-07&end_date=2019-09-07&api_key=VkhjpIiZWLF0DVij5GbHSRPVQFvNLHLZiQj1w6Lr"
     ></ElementTable>
