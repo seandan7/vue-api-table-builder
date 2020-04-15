@@ -7,7 +7,6 @@
       <transition name="height-shrink">
         <div class="m-33" v-cloak v-if="elements.length > 0 && showSummary">
           <p>showing {{ elements.length }} items</p>
-          <p>{{ closestObj }} has the shortest miss</p>
         </div>
       </transition>
     </div>
@@ -49,30 +48,30 @@ export default {
       elements: [],
     };
   },
-  computed: {
-    closestObj: function() {
-      var hasData = this.elements.filter((item) => {
-        return item.close_approach_data.length > 0;
-      });
-      var simpleNoes = hasData.map((item) => {
-        return {
-          name: item.name,
-          miles: item.close_approach_data[0].miss_distance.miles,
-        };
-      });
-      var sortedneos = simpleNoes.sort((a, b) => {
-        return a.miles - b.miles;
-      });
-      return sortedneos[0].name;
-    },
-  },
+
   created() {
     fetch(this.url)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        this.elements = data.near_earth_objects["2019-09-07"].slice(0, 10);
+        /*
+        this.elements = data.near_earth_objects["2019-09-07"].slice(
+          0,
+          this.$props.elementCount
+        );
+        */
+        if (this.dataToShow.subData) {
+          if (this.dataToShow.subSubData) {
+            this.elements =
+              data[this.dataToShow.subData][this.dataToShow.subSubData];
+          } else {
+            this.elements = data[this.dataToShow.subData];
+          }
+        } else {
+          this.elements = data;
+        }
+        console.log(this.elements);
       });
   },
   methods: {
@@ -87,6 +86,7 @@ export default {
     url: String,
     heading: String,
     dataToShow: Object,
+    elementCount: Number,
   },
 };
 </script>
