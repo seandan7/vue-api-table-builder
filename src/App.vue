@@ -7,7 +7,7 @@
         dataPoints: [
           'name',
           'absolute_magnitude_h',
-          'close_approach_data[0].miss_distance',
+          'close_approach_data[0].miss_distance.miles',
         ],
       }"
       heading="Near Earth Objects"
