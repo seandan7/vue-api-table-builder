@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  name: "NasaTable",
+  name: "ElementTable",
   data() {
     return {
       showSummary: true,
@@ -71,7 +71,8 @@ export default {
         } else {
           this.elements = data;
         }
-        console.log(this.elements);
+        console.log(this.elementCount);
+        this.elements.splice(10);
       });
   },
   methods: {

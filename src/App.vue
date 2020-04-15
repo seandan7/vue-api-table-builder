@@ -2,13 +2,13 @@
   <div id="app" class="container text-center mt-5">
     <Form></Form>
     <ElementTable
+      elementCount="10"
       :dataToShow="{
-        elementCount: 10,
         tableHeadings: ['Id', 'Name', 'Magnitude', 'Miss Distance', 'Remove'],
         dataPoints: [
           'name',
           'absolute_magnitude_h',
-          'close_approach_data[0].miss_distance.miles',
+          'close_approach_data[0][miss_distance.miles]',
         ],
         subData: `near_earth_objects`,
         subSubData: '2019-09-07',
