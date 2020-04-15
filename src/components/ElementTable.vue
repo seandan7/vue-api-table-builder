@@ -71,8 +71,7 @@ export default {
         } else {
           this.elements = data;
         }
-        console.log(this.elementCount);
-        this.elements.splice(10);
+        this.elements.splice(this.elementCount);
       });
   },
   methods: {
