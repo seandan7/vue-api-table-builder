@@ -1,1 +1,3 @@
 # vue-api-table-builder
+
+A app working off of "Learning Vue 3" in LinkedIn Learning to build a table builder with any third party API
