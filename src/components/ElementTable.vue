@@ -26,6 +26,7 @@
           <td>{{ index + 1 }}</td>
           <td v-for="(dataPoint, index) in dataToShow.dataPoints" :key="index">
             {{ element[dataPoint] }}
+            {{ log(element[dataPoint]) }}
           </td>
 
           <td>
@@ -75,6 +76,9 @@ export default {
       });
   },
   methods: {
+    log(message) {
+      console.log(message);
+    },
     remove: function(index) {
       this.elements.splice(index, 1);
     },
