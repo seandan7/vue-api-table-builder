@@ -1,6 +1,5 @@
 <template>
   <div id="app" class="container text-center mt-5">
-    <Form></Form>
     <ElementTable
       :elementCount="Number(9)"
       :dataToShow="{
@@ -30,7 +29,6 @@
 </template>
 
 <script>
-import Form from "./components/Form.vue";
 import ElementTable from "./components/ElementTable";
 
 export default {
@@ -42,7 +40,6 @@ export default {
     };
   },
   components: {
-    Form,
     ElementTable,
   },
 };

@@ -50,8 +50,8 @@ export default {
   name: "ElementTable",
   data() {
     return {
-      showSummary: true,
-      elements: [],
+      showSummary: true, // total items toggler
+      elements: [], // this populates on created,
     };
   },
 
@@ -61,12 +61,7 @@ export default {
         return response.json();
       })
       .then((data) => {
-        /*
-        this.elements = data.near_earth_objects["2019-09-07"].slice(
-          0,
-          this.$props.elementCount
-        );
-        */
+        // this accounts for the subdata in NASA's API two levels. TODO: Refactor
         if (this.dataToShow.subData) {
           if (this.dataToShow.subSubData) {
             this.elements =
@@ -77,6 +72,7 @@ export default {
         } else {
           this.elements = data;
         }
+        // only show number of elements specified. TODO: Allow prop for if url has limit param
         this.elements.splice(this.elementCount);
       });
   },
