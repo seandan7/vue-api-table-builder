@@ -10,7 +10,12 @@
         </div>
       </transition>
     </div>
-    <a href="#" @click="showSummary = !showSummary">Toggle summary</a>
+    <button
+      class="btn btn-primary btn-sm d-inline-block"
+      @click.stop="showSummary = !showSummary"
+    >
+      Toggle summary
+    </button>
     <table class="table table-striped table-dark">
       <thead>
         <th
