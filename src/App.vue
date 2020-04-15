@@ -6,7 +6,7 @@
         tableHeadings: ['Id', 'Name', 'Magnitude', 'Miss Distance', 'Remove'],
         dataPoints: [
           'name',
-          'magnitude',
+          'absolute_magnitude_h',
           'close_approach_data[0].miss_distance',
         ],
       }"
