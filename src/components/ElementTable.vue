@@ -104,6 +104,6 @@ export default {
 .height-shrink-enter-active,
 .height-shrink-leave-active {
   max-height: 500px;
-  transition: all 0.2s;
+  transition: all 0.2s ease-in-out;
 }
 </style>
