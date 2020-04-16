@@ -9,11 +9,12 @@
           'absolute_magnitude_h',
           'close_approach_data[0][miss_distance.miles]',
         ],
-        subData: `near_earth_objects`,
-        subSubData: '2019-09-07',
+
+        // OPTIONAL:  put each object property into array until you get the data you want in table
+        subDataPath: ['near_earth_objects', '2019-09-08'],
       }"
       heading="Near Earth Objects"
-      url="https://api.nasa.gov/neo/rest/v1/feed?start_date=2019-09-07&end_date=2019-09-07&api_key=VkhjpIiZWLF0DVij5GbHSRPVQFvNLHLZiQj1w6Lr"
+      url="https://api.nasa.gov/neo/rest/v1/feed?start_date=2019-09-07&end_date=2019-09-08&api_key=VkhjpIiZWLF0DVij5GbHSRPVQFvNLHLZiQj1w6Lr"
     ></ElementTable>
     <ElementTable
       elementCount="50"
@@ -34,7 +35,7 @@ import ElementTable from "./components/ElementTable";
 export default {
   name: "App",
 
-  data: function() {
+  data() {
     return {
       asteroids: [],
     };

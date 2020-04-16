@@ -31,7 +31,6 @@
           <td>{{ index + 1 }}</td>
           <td v-for="(dataPoint, index) in dataToShow.dataPoints" :key="index">
             {{ element[dataPoint] }}
-            {{ log(element[dataPoint]) }}
           </td>
 
           <td>
@@ -61,14 +60,14 @@ export default {
         return response.json();
       })
       .then((data) => {
-        // this accounts for the subdata in NASA's API two levels. TODO: Refactor
-        if (this.dataToShow.subData) {
-          if (this.dataToShow.subSubData) {
-            this.elements =
-              data[this.dataToShow.subData][this.dataToShow.subSubData];
-          } else {
-            this.elements = data[this.dataToShow.subData];
+        // this accounts for api urls in which the data is not the first result
+        if (this.dataToShow.subDataPath) {
+          let fullPath = data;
+          for (let i = 0; i < this.dataToShow.subDataPath.length; i++) {
+            fullPath = fullPath[this.dataToShow.subDataPath[i]];
+            console.log(fullPath);
           }
+          this.elements = fullPath;
         } else {
           this.elements = data;
         }
