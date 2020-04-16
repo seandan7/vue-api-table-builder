@@ -3,7 +3,7 @@
     <ElementTable
       :elementCount="Number(9)"
       :dataToShow="{
-        tableHeadings: ['Id', 'Name', 'Magnitude', 'Miss Distance', 'Remove'],
+        tableHeadings: ['Name', 'Magnitude', 'Miss Distance'],
         dataPoints: [
           'name',
           'absolute_magnitude_h',
@@ -19,7 +19,7 @@
     <ElementTable
       :elementCount="Number(50)"
       :dataToShow="{
-        tableHeadings: ['Id', 'userId', 'title', 'completed', 'Remove'],
+        tableHeadings: ['userId', 'title', 'completed'],
         dataPoints: ['userId', 'title', 'completed'],
       }"
       heading="User Test API"

@@ -18,6 +18,7 @@
     </button>
     <table class="table table-striped table-dark">
       <thead>
+        <th>ID</th>
         <th
           :key="index"
           v-for="(element, index) in dataToShow.tableHeadings"
@@ -25,6 +26,7 @@
         >
           {{ element }}
         </th>
+        <th>Remove</th>
       </thead>
       <tbody :key="index" v-for="(element, index) in elements">
         <tr>
