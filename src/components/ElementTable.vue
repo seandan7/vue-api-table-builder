@@ -98,6 +98,12 @@ export default {
           fullPath = fullPath[arr[i]];
         }
         return fullPath;
+      } else {
+        let fullPath;
+        for (let i = 0; i < arr.length; i++) {
+          fullPath = fullPath[arr[i]];
+        }
+        return fullPath;
       }
     },
   },
