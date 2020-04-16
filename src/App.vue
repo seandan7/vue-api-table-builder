@@ -7,6 +7,7 @@
         dataPoints: [
           'name',
           'absolute_magnitude_h',
+          // SubArray will go through to the last point in this field
           ['close_approach_data', '0', 'miss_distance', 'miles'],
         ],
 
