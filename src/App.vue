@@ -7,7 +7,7 @@
         dataPoints: [
           'name',
           'absolute_magnitude_h',
-          'close_approach_data[0][miss_distance.miles]',
+          ['close_approach_data', '0', 'miss_distance', 'miles'],
         ],
 
         // OPTIONAL:  put each object property into array until you get the data you want in table

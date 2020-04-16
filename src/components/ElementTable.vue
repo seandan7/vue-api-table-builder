@@ -32,7 +32,12 @@
         <tr>
           <td>{{ index + 1 }}</td>
           <td v-for="(dataPoint, index) in dataToShow.dataPoints" :key="index">
-            {{ element[dataPoint] }}
+            <span v-if="typeof dataPoint === 'string'">
+              {{ element[dataPoint] }}
+            </span>
+            <span v-else-if="Array.isArray(dataPoint)">
+              {{ getObjPathFromArr(dataPoint, element) }}
+            </span>
           </td>
 
           <td>
@@ -64,12 +69,10 @@ export default {
       .then((data) => {
         // this accounts for api urls in which the data is not the first result
         if (this.dataToShow.subDataPath) {
-          let fullPath = data;
-          for (let i = 0; i < this.dataToShow.subDataPath.length; i++) {
-            fullPath = fullPath[this.dataToShow.subDataPath[i]];
-            console.log(fullPath);
-          }
-          this.elements = fullPath;
+          this.elements = this.getObjPathFromArr(
+            this.dataToShow.subDataPath,
+            data
+          );
         } else {
           this.elements = data;
         }
@@ -86,6 +89,16 @@ export default {
     },
     isOdd(idx) {
       return idx % 2 === 0;
+    },
+    getObjPathFromArr(arr, start = null) {
+      if (start) {
+        let fullPath = start;
+        console.log(fullPath);
+        for (let i = 0; i < arr.length; i++) {
+          fullPath = fullPath[arr[i]];
+        }
+        return fullPath;
+      }
     },
   },
   props: {
