@@ -17,7 +17,7 @@
       url="https://api.nasa.gov/neo/rest/v1/feed?start_date=2019-09-07&end_date=2019-09-08&api_key=VkhjpIiZWLF0DVij5GbHSRPVQFvNLHLZiQj1w6Lr"
     ></ElementTable>
     <ElementTable
-      elementCount="50"
+      :elementCount="Number(50)"
       :dataToShow="{
         tableHeadings: ['Id', 'userId', 'title', 'completed', 'Remove'],
         dataPoints: ['userId', 'title', 'completed'],
